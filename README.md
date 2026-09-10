@@ -4,6 +4,10 @@ Aplikasi AI Completions Harness interaktif dan performan tinggi yang dirancang m
 
 Aplikasi ini **khusus didedikasikan untuk mengeksekusi AI Completions nyata**: menghubungkan endpoint LLM (OpenAI, 9router, Ollama, Groq, vLLM, DeepSeek), mengalirkan respons Server-Sent Events (SSE), merender artefak kode & SVG secara langsung, menjalankan server MCP (Model Context Protocol) dengan autentikasi nyata, serta mengelola keahlian agen (*agent skills*) dengan gerbang keamanan interaktif (*human-in-the-loop security gate*). Seluruh data sesi obrolan, riwayat pesan, dan pengaturan tersimpan secara aman dan persisten di dalam **IndexedDB** peramban.
 
+<p align="center">
+  <img src="./public/preview.png" alt="beChat UI Preview" width="100%" />
+</p>
+
 ---
 
 ## 🚀 Fitur Utama
