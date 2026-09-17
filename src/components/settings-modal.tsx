@@ -4,6 +4,8 @@ import {
   Activity,
   Check,
   Cpu,
+  Eye,
+  EyeOff,
   FileCode2,
   Globe,
   KeyRound,
@@ -79,6 +81,7 @@ export function SettingsModal({
 
   // 1. State API Profile
   const [draftProfile, setDraftProfile] = useState<DraftProfile | null>(null);
+  const [showApiKey, setShowApiKey] = useState(false);
   const [profileFormError, setProfileFormError] = useState<string | undefined>(undefined);
   const [testingApi, setTestingApi] = useState(false);
   const [apiTestResult, setApiTestResult] = useState<
@@ -493,6 +496,7 @@ export function SettingsModal({
                       onClick={() => {
                         setApiTestResult(null);
                         setProfileFormError(undefined);
+                        setShowApiKey(false);
                         setDraftProfile(emptyDraftProfile);
                       }}
                       className="text-xs gap-1.5"
@@ -556,6 +560,7 @@ export function SettingsModal({
                             onClick={() => {
                               setApiTestResult(null);
                               setProfileFormError(undefined);
+                              setShowApiKey(false);
                               setDraftProfile({ ...profile });
                             }}
                             className="size-7 text-muted-foreground hover:text-foreground"
@@ -599,10 +604,22 @@ export function SettingsModal({
                   />
                   <Input
                     label="API Key"
-                    type="password"
+                    type={showApiKey ? "text" : "password"}
                     placeholder="sk-... (kosongkan bila tidak diperlukan)"
                     value={draftProfile.apiKey}
                     onChange={(val) => setDraftProfile({ ...draftProfile, apiKey: val })}
+                    rightIcon={
+                      <button
+                        type="button"
+                        onClick={() => setShowApiKey((v) => !v)}
+                        aria-label={showApiKey ? "Sembunyikan API Key" : "Tampilkan API Key"}
+                        aria-pressed={showApiKey}
+                        title={showApiKey ? "Sembunyikan API Key" : "Tampilkan API Key"}
+                        className="text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {showApiKey ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                      </button>
+                    }
                   />
 
                   <div className="flex items-center gap-2 pt-1">
